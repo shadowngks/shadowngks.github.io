@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess for newbies</title>
+    <link rel="stylesheet" href="chess.css">
+    <script>
+        var name = prompt("Hi there! What is your name?")
+        alert("Hey " + name + "! Welcome to the start your exciting chess learning journey!")
+    </script>
+    <div id="navbar">
+        <a class="active" href="javascript:void(0)">Basics</a>
+        <a href="javascript:void(0)">Chess Terms</a>
+        <a href="javascript:void(0)">Tools</a>
+      </div>
+      <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+        </script>  
+</head>
+<body>
+<div>
+    <br>
+    <h1>Hello and welcome on your exciting journey on learning chess!</h1>
+    <br>
+    <h2>Let's start with the basics!</h2>
+    <hr>
+    <fieldset id="field">There are 6 different types of pieces on a chessboard and they are:
+    <br>
+    <script>
+        function showpieces() {
+            pieces = ["Pawn", "Knight", "Bishop", "Rook", "Queen", "King"];
+            let txt = "";
+            var x = 1
+                for (i in pieces) {
+                    txt += x + ". " + pieces[i] + "<br>"
+                    x++
+                }
+            document.getElementById("showpieces").innerHTML = txt;
+        }
+    </script>
+    <p id="showpieces"></p>
+    <button onclick="showpieces()">Click to see pieces</button>
+    </fieldset>
+
+    <br>
+    <h2>This is how a chessboard looks like:</h2>
+    <style>
+        .chess-board { border-spacing: 0; border-collapse: collapse; }
+        .chess-board th { padding: .5em; }
+        .chess-board th + th { border-bottom: 1px solid #000; }
+        .chess-board th:first-child,
+        .chess-board td:last-child { border-right: 1px solid #000; }
+        .chess-board tr:last-child td { border-bottom: 1px solid #000; }
+        .chess-board th:empty { border: none; }
+        .chess-board td { width: 1.5em; height: 1.5em; text-align: center; font-size: 32px; line-height: 0;}
+        .chess-board .light { background: #C5AB8A; }
+        .chess-board .dark { background: #79583E; }
+        .chess-board { margin-left: 380px;}
+        .highlightW { background: #d7b72c;}
+        .highlightB { background: #c4a728;}
+    </style>
+</div>
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black">♜</td>
+                <td class="dark" id="black">♞</td>
+                <td class="light" id="black">♝</td>
+                <td class="dark" id="black">♛</td>
+                <td class="light" id="black">♚</td>
+                <td class="dark" id="black">♝</td>
+                <td class="light" id="black">♞</td>
+                <td class="dark" id="black">♜</td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black">♟</td>
+                <td class="light" id="black">♟</td>
+                <td class="dark" id="black">♟</td>
+                <td class="light" id="black">♟</td>
+                <td class="dark" id="black">♟</td>
+                <td class="light" id="black">♟</td>
+                <td class="dark" id="black">♟</td>
+                <td class="light" id="black">♟</td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light">♟</td>
+                <td class="dark">♟</td>
+                <td class="light">♟</td>
+                <td class="dark">♟</td>
+                <td class="light">♟</td>
+                <td class="dark">♟</td>
+                <td class="light">♟</td>
+                <td class="dark">♟</td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark">♜</td>
+                <td class="light">♞</td>
+                <td class="dark">♝</td>
+                <td class="light">♛</td>
+                <td class="dark">♚</td>
+                <td class="light">♝</td>
+                <td class="dark">♞</td>
+                <td class="light">♜</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>On a chessboard, row are called <b>ranks</b> and columns are called <b>files</b></p>
+    <hr>
+    <h2>Let's have a look at how the pieces interact on the board:</h2>
+    <p><b>Pawns</b> can only move <b>one</b> square forward but if they are on the <b>second rank</b> they can move either <b>one or two</b> square. Pawns can only capture pieces <b>one square diagonally</b></p>
+
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="highlightB"></td>
+                <td class="light">♟</td>
+                <td class="highlightB"></td>
+                <td class="light">♟</td>
+                <td class="highlightB"></td>
+                <td class="light">♟</td>
+                <td class="highlightB"></td>
+                <td class="light">♟</td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light">♟</td>
+                <td class="dark"></td>
+                <td class="light">♟</td>
+                <td class="dark"></td>
+                <td class="light">♟</td>
+                <td class="dark"></td>
+                <td class="light">♟</td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><b>Knights</b> move and <b title="Capture means to take your opponents piece"> <u>capture</u> </b>in L-shapes</p>
+
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW" id="black">♜</td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark">♞</td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW" id="black">♛</td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><b>Bishops</b> move and <b title="Capture means to take your opponents piece" > <u>capture</u> </b>diagonally. There's 2 types of bishops, a <b>Dark-squared</b> and a <b>Light-squared Bishop</b></p>
+
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="highlightW" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="highlightW" id="black"></td>
+                <td class="highlightB" id="black">♞</td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="highlightW" id="black"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light" title="Light-squared Bishop">♝</td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="dark" title="Dark-squared Bishop">♝</td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW" id="black">♜</td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><b>Rooks</b> move and <b title="Capture means to take your opponents piece"> <u>capture</u> </b>both <b>horizontally</b> and <b>vertically</b></p>
+
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="highlightB" id="black">♝</td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB" id="black">♞</td>
+                <td class="light">♜</td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>The <b>Queen</b> is like a Bishop and a Rook combined. It moves <b>horizontally</b>, <b>vertically</b> and <b>diagonally</b>. The <b>Queen</b> can <b title="Capture means to take your opponents piece"> <u>capture</u> </b> any piece as long as it is <b>horizontally</b>, <b>vertically</b> or <b>diagonally</b> away from it</p>
+
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="highlightW" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="highlightB" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="highlightB" id="black">♜</td>
+                <td class="light" id="black"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB" id="black">♞</td>
+                <td class="highlightW"></td>
+                <td class="highlightB">♛</td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>The <b>King</b> is like a Queen except it can only move and <b title="Capture means to take your opponents piece"> <u>capture</u> </b><b>one square in all 8 directions</b></p>
+
+    <table class="chess-board">
+        <tbody>
+            <tr>
+                <th></th>
+                <th>a</th>
+                <th>b</th>
+                <th>c</th>
+                <th>d</th>
+                <th>e</th>
+                <th>f</th>
+                <th>g</th>
+                <th>h</th>
+            </tr>
+            <tr>
+                <th>8</th>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+            </tr>
+            <tr>
+                <th>7</th>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+                <td class="dark" id="black"></td>
+                <td class="light" id="black"></td>
+            </tr>
+            <tr>
+                <th>6</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>5</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>4</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="highlightW"></td>
+                <td class="dark">♚</td>
+                <td class="highlightW"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>3</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="highlightB"></td>
+                <td class="highlightW"></td>
+                <td class="highlightB"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+            <tr>
+                <th>2</th>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+            </tr>
+            <tr>
+                <th>1</th>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+                <td class="dark"></td>
+                <td class="light"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+    <h3>Now that you understand how the pieces move. Let us take the next step in learning chess!</h3>
+    
+</body>
+</html>

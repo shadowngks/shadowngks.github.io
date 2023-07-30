@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="chess.css">
+    <div id="navbar">
+        <a class="active" href="javascript:void(0)">Basics</a>
+        <a href="javascript:void(0)">Chess Terms</a>
+        <a href="javascript:void(0)">Tools</a>
+      </div>
+      <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+          if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+          } else {
+            navbar.classList.remove("sticky");
+          }
+        }
+        </script>  
+</head>
+<body>
+    
+</body>
+</html>
