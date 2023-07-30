@@ -46,7 +46,7 @@ body {
   
   #navbar {
     overflow: hidden;
-    background-color: #333;
+    background-color: #aa5704;
   }
   
   #navbar a {
@@ -60,12 +60,12 @@ body {
   }
   
   #navbar a:hover {
-    background-color: #ddd;
+    background-color: #e6d46e;
     color: black;
   }
   
   #navbar a.active {
-    background-color: #04AA6D;
+    background-color: #d06d03;
     color: white;
   }
   
